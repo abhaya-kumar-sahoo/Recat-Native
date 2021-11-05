@@ -4,30 +4,18 @@ import * as React from 'react';
 import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import Summery from './Summery';
 import Memo from './Memo';
-import List from './List';
-function FeedScreen() {
-  return (
-    <View>
-  <List/>
-</View>
-  )
-}
+import UserList from './UserList';
+import Summery from './Summery';
 
-function NotificationsScreen() {
-  return (
-<Memo />
-  );
-}
+function UserScreen() {
+  return <UserList/>}
 
-function ProfileScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Profile!</Text>
-    </View>
-  );
-}
+function MmeoScreen() {
+  return <Memo/>}
+
+function SummeryScreen() {
+  return <Summery/>}
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -54,17 +42,17 @@ function MyTabs() {
       }}>
       <Tab.Screen
         name="Summery"
-        component={FeedScreen}
+        component={SummeryScreen}
         options={{tabBarLabel: 'Summey'}}
       />
       <Tab.Screen
-        name="Notifications"
-        component={NotificationsScreen}
+        name="Users"
+        component={UserScreen}
         options={{tabBarLabel: 'Users'}}
       />
       <Tab.Screen
         name="Memos"
-        component={ProfileScreen}
+        component={MmeoScreen}
         options={{tabBarLabel: 'Memos'}}
       />
     </Tab.Navigator>

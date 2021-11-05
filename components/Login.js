@@ -7,44 +7,49 @@ import {
   Image,
   Button,
   Pressable,
+  ScrollView,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import User from './Control';
 
-import User from './User';
-import Summery from './Summery';
-import Memo from './Memo';
-import List from './List';
 function HomeScreen({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [state, setstate] = useState('100');
-  // if (email==="" & password==="") {
-
-  // }
+  const [done, setdone] = useState('f');
 
   const submit = e => {
-    console.warn(email, password);
-    navigation.navigate('Details');
+    if ((email === '') & (password === '')) {
+    } else if ((email === 'memofac') & (password === 'memofac')) {
+      navigation.navigate('Details');
+    } else {
+      alert('Please Fill Correct Details');
+    }
   };
   return (
     <View style={[styles.container, {flexDirection: 'column'}]}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
-        <View style={{flex: 1, right: 0, backgroundColor: 'white'}}>
+        <View style={{flex: 1, right: 0, backgroundColor: 'white', zIndex: 1}}>
           <Text
             onPress={submit}
-            style={{
-              position: 'absolute',
-              right: 20,
-              top: 15,
-              fontWeight: '900',
-              fontSize: 20,
-            }}>
+            style={[
+              styles.dones,
+              {
+                color:
+                  email.length > 0 && password.length > 0 ? 'black' : '#ebebeb',
+              },
+            ]}>
             Done
           </Text>
         </View>
-        <View style={{flex: 1, alignItems: 'center'}}>
+        <View
+          style={{
+            flex: 3,
+            backgroundColor: 'white',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
           <Image style={styles.image} source={require('./assets/logo.png')} />
         </View>
       </View>
@@ -59,11 +64,15 @@ function HomeScreen({navigation}) {
           }}>
           Username
         </Text>
-        <View style={styles.inputView}>
+        <View style={[styles.inputView]}>
           <TextInput
-            style={styles.TextInput}
+            style={[
+              styles.TextInput,
+              {backgroundColor: email.length > 0 ? 'gray' : '#c1c4c9'},
+            ]}
             textContentType="emailAddress"
-            placeholderTextColor="#003f5c"
+            placeholder="Enter name"
+            placeholderTextColor="#a2a3a0"
             onChangeText={email => setEmail(email)}
           />
         </View>
@@ -78,8 +87,12 @@ function HomeScreen({navigation}) {
         </Text>
         <View style={styles.inputView}>
           <TextInput
-            style={styles.TextInput}
-            placeholderTextColor="#003f5c"
+            style={[
+              styles.TextInput,
+              {backgroundColor: password.length > 0 ? 'gray' : '#c1c4c9'},
+            ]}
+            placeholderTextColor="#a2a3a0"
+            placeholder="Enter password"
             secureTextEntry={true}
             onChangeText={password => setPassword(password)}
           />
@@ -105,7 +118,7 @@ function App() {
           options={{
             headerShown: false,
           }}
-          name="Home" 
+          name="Home"
           component={HomeScreen}
         />
         <Stack.Screen
@@ -127,7 +140,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputView: {
-    backgroundColor: '#c1c4c9',
+    //backgroundColor: '#c1c4c9',
     borderRadius: 30,
     width: '70%',
     height: 45,
@@ -139,23 +152,27 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     paddingTop: 30,
+    position: 'relative',
   },
 
   TextInput: {
     height: 50,
     flex: 1,
     padding: 10,
-    marginLeft: 20,
     flexDirection: 'row',
     alignItems: 'center',
+    borderRadius: 30,
+    paddingLeft: 30,
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 17,
   },
   image: {
     width: 180,
     height: 180,
     borderRadius: 180 / 2,
-    overflow: 'scroll',
-    position: 'absolute',
-    bottom: 30,
+    position: 'relative',
+    marginBottom: 30,
   },
   button: {
     alignItems: 'center',
@@ -189,4 +206,20 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 10,
   },
+  dones: {
+    position: 'absolute',
+    right: 20,
+    top: 15,
+    fontWeight: '900',
+    fontSize: 20,
+    //color:"red"
+  },
+  // doneHighlight:{
+  //   color:"black",
+  //   position: 'absolute',
+  //   right: 20,
+  //   top: 15,
+  //   fontWeight: '900',
+  //   fontSize: 20,
+  // }
 });
