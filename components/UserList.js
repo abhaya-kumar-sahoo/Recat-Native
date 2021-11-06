@@ -8,6 +8,7 @@ import {
   StatusBar,Image,Pressable,Button
 } from 'react-native';
 
+
 const DATA = [
   {
     image: 'https://i.pinimg.com/736x/95/d6/64/95d664f276de5a52243932e8d03f6743.jpg',
@@ -15,7 +16,8 @@ const DATA = [
     dob: '1999',
     gender: 'Male',
     number: '9348557381',
-    star:'5'
+    star:'5',
+    thikk:"https://www.linkpicture.com/q/Experienced.png"
   },
   {
     image: 'https://images.pexels.com/photos/1767434/pexels-photo-1767434.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -56,7 +58,7 @@ const App = () => (
     {DATA.map((element, index) => {
       return (
         <View key={index}>
-        <View style={{height: 100, flexDirection: 'row'}}>
+        <View style={{height: 100, flexDirection: 'row',paddingTop:15}}>
           <View
             style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <Image
@@ -65,9 +67,9 @@ const App = () => (
             />
           </View>
           <View style={{flex: 1, justifyContent: 'center'}}>
-            <Text style={{fontWeight: '900', fontSize: 20}}>{element.name}</Text>
-            <Text style={{fontWeight: '600'}}>{element.dob},{element.gender}</Text>
-            <Text style={{fontWeight: '600'}}>{element.number}</Text>
+            <Text style={{fontWeight: '900', fontSize: 20,paddingBottom:5}}>{element.name}</Text>
+            <Text style={{fontWeight: '600',paddingBottom:5}}>{element.dob},{element.gender}</Text>
+            <Text style={{fontWeight: '600',paddingBottom:5}}>{element.number}</Text>
           </View>
           <View
             style={{
@@ -75,11 +77,14 @@ const App = () => (
               justifyContent: 'center',
               alignItems: 'flex-end',
               paddingRight: 20,
+              
             }}>
-            <Text style={{paddingBottom: 10}}>✔ {element.star}</Text>
+            <Text style={{paddingBottom: 10}}><Image style={{height:10,width:10}} source={require("./assets/Experienced.png")}/>  {element.star}</Text>
             <Pressable style={styles.button}>
               <Text style={styles.text}>Edit</Text>
+
             </Pressable>
+            
           </View>
         </View>
         <View style={{alignItems: 'center'}}>

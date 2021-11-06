@@ -38,7 +38,6 @@ function MyTabs() {
           paddingRight:20
         },
         tabBarStyle: {backgroundColor: 'white'},
-
       }}>
       <Tab.Screen
         name="Summery"
@@ -49,6 +48,7 @@ function MyTabs() {
         name="Users"
         component={UserScreen}
         options={{tabBarLabel: 'Users'}}
+        
       />
       <Tab.Screen
         name="Memos"

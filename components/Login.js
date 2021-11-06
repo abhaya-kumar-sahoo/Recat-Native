@@ -29,7 +29,7 @@ function HomeScreen({navigation}) {
   };
   return (
     <View style={[styles.container, {flexDirection: 'column'}]}>
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{flex: 1, backgroundColor: 'white',zIndex:100}}>
         <View style={{flex: 1, right: 0, backgroundColor: 'white', zIndex: 1}}>
           <Text
             onPress={submit}
@@ -37,7 +37,7 @@ function HomeScreen({navigation}) {
               styles.dones,
               {
                 color:
-                  email.length > 0 && password.length > 0 ? 'black' : '#ebebeb',
+                  email.length > 0 && password.length > 0 ? '#524848' : '#ebebeb',
               },
             ]}>
             Done
@@ -57,7 +57,7 @@ function HomeScreen({navigation}) {
       <View style={styles.downView}>
         <Text
           style={{
-            paddingBottom: 20,
+            paddingBottom: 10,
             paddingRight: '40%',
             fontWeight: '900',
             fontSize: 20,
@@ -68,17 +68,17 @@ function HomeScreen({navigation}) {
           <TextInput
             style={[
               styles.TextInput,
-              {backgroundColor: email.length > 0 ? 'gray' : '#c1c4c9'},
+              {backgroundColor: email.length > 0 ? '#524848' : '#c4c0c0'},
             ]}
             textContentType="emailAddress"
             placeholder="Enter name"
-            placeholderTextColor="#a2a3a0"
+            placeholderTextColor="#FFFFFF"
             onChangeText={email => setEmail(email)}
           />
         </View>
         <Text
           style={{
-            paddingBottom: 20,
+            paddingBottom: 10,
             paddingRight: '40%',
             fontWeight: '900',
             fontSize: 20,
@@ -89,9 +89,9 @@ function HomeScreen({navigation}) {
           <TextInput
             style={[
               styles.TextInput,
-              {backgroundColor: password.length > 0 ? 'gray' : '#c1c4c9'},
+              {backgroundColor: password.length > 0 ? '#524848' : '#c4c0c0'},
             ]}
-            placeholderTextColor="#a2a3a0"
+            placeholderTextColor="#FFFFFF" 
             placeholder="Enter password"
             secureTextEntry={true}
             onChangeText={password => setPassword(password)}
@@ -100,7 +100,7 @@ function HomeScreen({navigation}) {
       </View>
     </View>
   );
-}
+} 
 
 function DetailsScreen({navigation}) {
   return <User />;
@@ -140,7 +140,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputView: {
-    //backgroundColor: '#c1c4c9',
     borderRadius: 30,
     width: '70%',
     height: 45,
@@ -152,7 +151,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     paddingTop: 30,
-    position: 'relative',
+    zIndex:1
   },
 
   TextInput: {
@@ -164,47 +163,16 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingLeft: 30,
     color: 'white',
-    fontWeight: '700',
-    fontSize: 17,
+    fontWeight: '600',
+    fontSize: 20,
+    
   },
   image: {
     width: 180,
     height: 180,
     borderRadius: 180 / 2,
     position: 'relative',
-    marginBottom: 30,
-  },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 7,
-    paddingHorizontal: 9,
-    borderRadius: 12,
-    elevation: 3,
-    backgroundColor: 'gray',
-    width: 60,
-  },
-  text: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
-  },
-  summery: {
-    width: 110,
-    borderRadius: 20,
-    paddingHorizontal: 10,
-  },
-  user: {
-    width: 80,
-    borderRadius: 20,
-    paddingHorizontal: 10,
-  },
-  memo: {
-    width: 90,
-    borderRadius: 20,
-    paddingHorizontal: 10,
+    marginBottom: 0,
   },
   dones: {
     position: 'absolute',
@@ -214,12 +182,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     //color:"red"
   },
-  // doneHighlight:{
-  //   color:"black",
-  //   position: 'absolute',
-  //   right: 20,
-  //   top: 15,
-  //   fontWeight: '900',
-  //   fontSize: 20,
-  // }
+
 });
